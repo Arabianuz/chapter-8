@@ -1,9 +1,13 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View, Button } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
 export default function Home() {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
-      <Text>Home screen</Text>
+      <Button onPress={() => navigation.navigate("Game")} title="Start game!" />
     </View>
   );
 }
