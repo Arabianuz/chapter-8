@@ -1,18 +1,42 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableHighlight } from "react-native";
+import { StyleSheet, Text, View, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import {
+  GestureHandlerRootView,
+  LongPressGestureHandler,
+  TapGestureHandler,
+  State,
+} from "react-native-gesture-handler";
 
 export default function Home() {
   const navigation = useNavigation();
 
+  function onLongPress(e) {
+    if (e.nativeEvent.state === State.ACTIVE) {
+      navigation.navigate("Game");
+    }
+  }
+
+  function onTap(e) {
+    if (e.nativeEvent.state === State.ACTIVE) {
+      Alert.alert("Long press to start the game");
+    }
+  }
+
   return (
     <View style={styles.container}>
-      <TouchableHighlight
-        onPress={() => navigation.navigate("Game")}
-        style={styles.button}
-      >
-        <Text style={styles.buttonText}>Start game!</Text>
-      </TouchableHighlight>
+      <GestureHandlerRootView>
+        <TapGestureHandler onHandlerStateChange={onTap}>
+          <LongPressGestureHandler
+            onHandlerStateChange={onLongPress}
+            minDurationMs={600}
+          >
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>Start game!</Text>
+            </View>
+          </LongPressGestureHandler>
+        </TapGestureHandler>
+      </GestureHandlerRootView>
     </View>
   );
 }
