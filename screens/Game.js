@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Alert,
-  TouchableHighlight,
-} from "react-native";
+import { StyleSheet, Text, View, Alert } from "react-native";
+import AnimatedButton from "../components/AnimatedButton";
 import { useNavigation } from "@react-navigation/native";
 
 export default function Game() {
@@ -27,19 +22,8 @@ export default function Game() {
   return (
     <View style={styles.container}>
       <Text style={styles.baseNumber}>Starting: {baseNumber}</Text>
-      <TouchableHighlight
-        onPress={() => setChoice("higher")}
-        style={[styles.button, styles.buttonGreen]}
-      >
-        <Text style={styles.buttonText}>Higher</Text>
-      </TouchableHighlight>
-
-      <TouchableHighlight
-        onPress={() => setChoice("lower")}
-        style={[styles.button, styles.buttonRed]}
-      >
-        <Text style={styles.buttonText}>Lower</Text>
-      </TouchableHighlight>
+      <AnimatedButton action="higher" onPress={() => setChoice("higher")} />
+      <AnimatedButton action="lower" onPress={() => setChoice("lower")} />
     </View>
   );
 }
