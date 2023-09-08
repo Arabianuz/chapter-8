@@ -18,13 +18,28 @@
       "supportsTablet": true
     },
     "android": {
+     
+            "compileSdkVersion": 28,
+            "targetSdkVersion": 28,
+            "buildToolsVersion": "28.0.0",
+          
+        
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.arabianuz.chapter8"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "be603a26-6bb8-4bb8-9e11-541ec863078a"
+      }
+    },
+    "plugins": [
+      "expo-build-properties"
+    ]
   }
 }

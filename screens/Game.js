@@ -14,8 +14,7 @@ export default function Game() {
       const winner =
         (choice === "higher" && score > baseNumber) ||
         (choice === "lower" && baseNumber > score);
-      Alert.alert(`You've ${winner ? "won" : "lost"}`, `You scored: ${score}`);
-      navigation.goBack();
+      navigation.navigate("Result", { winner });
     }
   }, [baseNumber, score, choice]);
 
